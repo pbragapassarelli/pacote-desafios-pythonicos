@@ -10,8 +10,17 @@ A sua solução deve rodar em tempo linear, ou seja, deve fazer uma
 """
 
 def linear_merge(list1, list2):
-    result = list1 + list2
-    return sorted(result)
+    result = []
+
+    for i in range(len(list1) + len(list2)):
+        if not list2 or list1[-1] > list2[-1]:
+            result.append(list1.pop(-1))
+        else:
+            result.append(list2.pop(-1))
+
+    result.reverse()
+
+    return result
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
