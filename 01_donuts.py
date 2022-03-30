@@ -10,8 +10,9 @@ e donuts(23) retorna 'Number of donuts: many'
 """
 
 def donuts(count):
-    string = f'Number of donuts: '
-    return string + (str(count) if count <10 else 'many')
+    string = f'Number of donuts:'
+    qty_str = str(count) if count < 10 else 'many'
+    return ' '.join([string, qty_str])
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
