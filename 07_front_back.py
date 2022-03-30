@@ -13,7 +13,7 @@ a-frente + b-frente + a-trás + b-trás
 def front_back(a, b):
     halfA = len(a) // 2
     halfB = len(b) // 2
-    return a[:-halfA] + b[:-halfB] + a[-halfA:] + b[-halfB:]
+    return ''.join([a[:-halfA], b[:-halfB], a[-halfA:], b[-halfB:]])
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
