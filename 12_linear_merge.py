@@ -13,7 +13,7 @@ def linear_merge(list1, list2):
     result = []
 
     while list1:
-        if not list2 or list2[-1] > list1[-1]:
+        if not list2 or list1[-1] > list2[-1]:
             result.append(list1.pop(-1))
         else:
             result.append(list2.pop(-1))
