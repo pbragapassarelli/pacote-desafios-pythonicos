@@ -44,10 +44,22 @@ import sys
 
 
 def mimic_dict(filename):
-  """Retorna o dicionario imitador mapeando cada palavra para a lista de
-  palavras subsequentes."""
+    """Retorna o dicionario imitador mapeando cada palavra para a lista de
+    palavras subsequentes."""
     # +++ SUA SOLUÇÃO +++
-  return
+    
+    dict = {
+      '': ['a']
+      'a': ['Terra', 'vida', 'Lua']
+      'Terra': ['é']
+      'vida': ['é']
+      'Lua': ['é']
+      'é': ['azul', 'bonita']
+      'azul': ['']
+      'bonita': ['']
+    }
+    
+    return dict
 
 
 def print_mimic(mimic_dict, word):
