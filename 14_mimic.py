@@ -42,6 +42,8 @@ método que escolhe um elemento aleatório de uma lista não vazia.
 import random
 import sys
 
+from collections import defaultdict
+
 def read_text_from_file(filename):
     with open(filename) as f:
         text = f.read()
@@ -57,24 +59,16 @@ def mimic_dict(filename):
 
     text = read_text_from_file(filename)
     wordlist = words_from_text(text)
-        
-    mimic_dict = {
-      '': [wordlist[0]] 
-    }
 
-    def add_next_word_to_mimic_dict(current_word, next_word, mimic_dict):
-        if current_word in mimic_dict.keys():
-            mimic_dict[current_word].append(next_word)
-        else:
-            mimic_dict[current_word] = [next_word]
-        
+    mimic_dict = defaultdict(list)       
+    mimic_dict[''].append(wordlist[0])
+    
     for i, word in enumerate(wordlist):
         
         if i == len(wordlist) - 1:
-            add_next_word_to_mimic_dict(word, '', mimic_dict)
+            mimic_dict[word].append('')
         else:
-            add_next_word_to_mimic_dict(word, wordlist[i+1], mimic_dict)
-
+            mimic_dict[word].append(wordlist[i+1])
     return mimic_dict
 
 
