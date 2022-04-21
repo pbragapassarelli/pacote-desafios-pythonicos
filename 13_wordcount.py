@@ -93,7 +93,7 @@ def print_top(filename):
     def get_count(tuple):
         return tuple[-1]
     wordcount = sorted(wordcount, key=get_count, reverse=True)
-    [print(word[0], word[1]) for word in wordcount] 
+    [print(word[0], word[1]) for word in wordcount[:20]] 
         
 
 # A função abaixo chama print_words() ou print_top() de acordo com os
