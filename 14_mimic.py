@@ -42,24 +42,42 @@ método que escolhe um elemento aleatório de uma lista não vazia.
 import random
 import sys
 
+def read_text_from_file(filename):
+    with open(filename) as f:
+        text = f.read()
+    return text
+
+def words_from_text(text):
+    return text.lower().split()
 
 def mimic_dict(filename):
     """Retorna o dicionario imitador mapeando cada palavra para a lista de
     palavras subsequentes."""
     # +++ SUA SOLUÇÃO +++
-    
-    dict = {
-      '': ['a'],
-      'a': ['Terra', 'vida', 'Lua'],
-      'Terra': ['é'],
-      'vida': ['é'],
-      'Lua': ['é'],
-      'é': ['azul', 'bonita'],
-      'azul': [''],
-      'bonita': ['']
+
+    text = read_text_from_file(filename)
+    wordlist = words_from_text(text)
+        
+    mimic_dict = {
+      '': [wordlist[0]] 
     }
+
+    def add_next_word_to_mimic_dict(current_word, next_word, mimic_dict):
+        if current_word in mimic_dict.keys():
+            mimic_dict[current_word].append(next_word)
+        else:
+            mimic_dict[current_word] = [next_word]
+        
+    for i, word in enumerate(wordlist):
+        
+        if i == len(wordlist) - 1:
+            add_next_word_to_mimic_dict(word, '', mimic_dict)
+        else:
+            add_next_word_to_mimic_dict(word, wordlist[i+1], mimic_dict)
+
+    print(mimic_dict)
     
-    return dict
+    return mimic_dict
 
 
 def print_mimic(mimic_dict, word):
