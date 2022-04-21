@@ -65,31 +65,7 @@ def read_text_from_file(filename):
 def words_from_text(text):
     return text.lower().split()
 
-def print_words(filename):
-
-    text = read_text_from_file(filename)
-    wordlist = words_from_text(text)
-    wordlist.sort()
-    
-    wordcount = []
-    count = 0
-    for i, word in enumerate(wordlist):
-        if i == 0:
-            count = 1
-            continue
-        elif word != wordlist[i-1]:
-            wordcount.append((wordlist[i-1], count))
-            count = 1
-        else:
-            count += 1
-
-    wordcount.append((wordlist[-1], count))
-    [print(word[0], word[1]) for word in wordcount] 
-
-
-def print_top(filename):
-
-    text = read_text_from_file(filename)
+def count_words_on_text(text):
     wordlist = words_from_text(text)
     wordset = set(wordlist)
 
@@ -97,6 +73,25 @@ def print_top(filename):
     for word in wordset:
         count = wordlist.count(word)
         wordcount.append((word, count))
+
+    return wordcount
+
+def print_words(filename):
+
+    text = read_text_from_file(filename)
+    wordcount = count_words_on_text(text)
+
+    def get_word(tuple):
+        return tuple[0]
+    wordcount = sorted(wordcount, key=get_word)
+
+    [print(word[0], word[1]) for word in wordcount] 
+
+
+def print_top(filename):
+
+    text = read_text_from_file(filename)
+    wordcount = count_words_on_text(text)
 
     def get_count(tuple):
         return tuple[-1]
