@@ -80,10 +80,7 @@ def print_words(filename):
 
     text = read_text_from_file(filename)
     wordcount = count_words_on_text(text)
-
-    def get_word(tuple):
-        return tuple[0]
-    wordcount = sorted(wordcount, key=get_word)
+    wordcount = sorted(wordcount, key=lambda x: x[0])
 
     [print(word[0], word[1]) for word in wordcount] 
 
@@ -92,10 +89,8 @@ def print_top(filename):
 
     text = read_text_from_file(filename)
     wordcount = count_words_on_text(text)
+    wordcount = sorted(wordcount, key=lambda x: x[1], reverse=True)
 
-    def get_count(tuple):
-        return tuple[-1]
-    wordcount = sorted(wordcount, key=get_count, reverse=True)
     [print(word[0], word[1]) for word in wordcount[:20]] 
         
 
