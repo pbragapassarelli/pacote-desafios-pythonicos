@@ -49,13 +49,13 @@ def mimic_dict(filename):
     # +++ SUA SOLUÇÃO +++
     
     dict = {
-      '': ['a']
-      'a': ['Terra', 'vida', 'Lua']
-      'Terra': ['é']
-      'vida': ['é']
-      'Lua': ['é']
-      'é': ['azul', 'bonita']
-      'azul': ['']
+      '': ['a'],
+      'a': ['Terra', 'vida', 'Lua'],
+      'Terra': ['é'],
+      'vida': ['é'],
+      'Lua': ['é'],
+      'é': ['azul', 'bonita'],
+      'azul': [''],
       'bonita': ['']
     }
     
@@ -63,9 +63,19 @@ def mimic_dict(filename):
 
 
 def print_mimic(mimic_dict, word):
-  """Dado o dicionario imitador e a palavra inicial, imprime texto de 200 palavras."""
+    """Dado o dicionario imitador e a palavra inicial, imprime texto de 200 palavras."""
     # +++ SUA SOLUÇÃO +++
-  return
+    text = word
+    wordcount = 1 if word else 0
+
+    while wordcount < 200:
+        next_word = random.choice(mimic_dict[word])
+        if next_word:
+            text = ' '.join([text, next_word])
+            wordcount += 1
+        word = next_word
+
+    print(text)
 
 
 # Chama mimic_dict() e print_mimic()
