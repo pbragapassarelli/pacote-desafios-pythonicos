@@ -57,6 +57,44 @@ import sys
 # +++ SUA SOLUÇÃO +++
 # Defina as funções print_words(filename) e print_top(filename).
 
+def print_words(filename):
+
+    with open(filename) as f:
+        text = f.read()
+    wordlist = text.lower().split()
+    wordlist.sort()
+    
+    count = 0
+    for i, word in enumerate(wordlist):
+        if i == 0:
+            count = 1
+            continue
+        elif word != wordlist[i-1]:
+            print(wordlist[i-1], count)
+            count = 1
+        else:
+            count += 1
+
+    print(wordlist[-1], count)
+
+
+def print_top(filename):
+
+    with open(filename) as f:
+        text = f.read()
+    wordlist = text.lower().split()
+    wordset = set(wordlist)
+
+    wordcount = []
+    for word in wordset:
+        count = wordlist.count(word)
+        wordcount.append((word, count))
+
+    def get_count(tuple):
+        return tuple[-1]
+    wordcount = sorted(wordcount, key=get_count, reverse=True)
+    [print(word[0], word[1]) for word in wordcount] 
+        
 
 # A função abaixo chama print_words() ou print_top() de acordo com os
 # parêtros do programa.
