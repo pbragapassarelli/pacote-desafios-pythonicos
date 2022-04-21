@@ -62,13 +62,14 @@ def mimic_dict(filename):
 
     mimic_dict = defaultdict(list)       
     mimic_dict[''].append(wordlist[0])
-    
+
     for i, word in enumerate(wordlist):
         
         if i == len(wordlist) - 1:
             mimic_dict[word].append('')
-        else:
-            mimic_dict[word].append(wordlist[i+1])
+            break
+        mimic_dict[word].append(wordlist[i+1])
+        
     return mimic_dict
 
 
