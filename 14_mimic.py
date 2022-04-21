@@ -75,8 +75,6 @@ def mimic_dict(filename):
         else:
             add_next_word_to_mimic_dict(word, wordlist[i+1], mimic_dict)
 
-    print(mimic_dict)
-    
     return mimic_dict
 
 
